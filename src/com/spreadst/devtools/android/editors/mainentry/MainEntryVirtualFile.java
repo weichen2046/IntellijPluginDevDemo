@@ -1,5 +1,6 @@
 package com.spreadst.devtools.android.editors.mainentry;
 
+import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.spreadst.devtools.demos.filesystem.DummyFileSystem;
@@ -16,6 +17,8 @@ public class MainEntryVirtualFile extends VirtualFile {
 
     public static final MainEntryVirtualFile INSTANCE = new MainEntryVirtualFile();
 
+    private static final DummyFileSystem mOutFileSystem = new DummyFileSystem();
+
     @NotNull
     @Override
     public String getName() {
@@ -25,7 +28,15 @@ public class MainEntryVirtualFile extends VirtualFile {
     @NotNull
     @Override
     public VirtualFileSystem getFileSystem() {
-        return new DummyFileSystem();
+        return mOutFileSystem;
+    }
+
+    @NotNull
+    @Override
+    public FileType getFileType() {
+        // This will give us the correct icon in editor tab even though file
+        // type can not infer from file name.
+        return MainEntryFileType.INSTANCE;
     }
 
     @NotNull
@@ -36,7 +47,8 @@ public class MainEntryVirtualFile extends VirtualFile {
 
     @Override
     public boolean isWritable() {
-        return false;
+        // Returns true to remove the lock icon from the editor tab.
+        return true;
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.spreadst.devtools.android.editors.mainentry;
 
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.spreadst.devtools.utils.Icons;
+import icons.Icons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
