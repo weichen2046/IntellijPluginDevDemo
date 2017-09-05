@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+{% if plugins %}
+  {% for plugin in plugins %}
+    <plugin id="{{ plugin.strId }}" url="{{ plugin.url }}" version="{{ plugin.version }}">
+      <description><![CDATA[{{ plugin.description }}]]></description>
+    </plugin>
+  {% endfor %}
+{% endif %}
+</plugins>

@@ -23,3 +23,43 @@ Intellij IDEA plugin development demos.
   ![snapshot](snapshots/plugin_action_demo.png)
 
 - [Custom Editor Demo](src/com/spreadst/devtools/android/editors/mainentry/)
+
+## Enterprise Repository
+
+### Initialize environment
+
+```
+cd enterprise-repo
+virtualenv env
+source env/bin/activate
+pip install Django==1.11.4
+
+python manage.py migrate
+```
+
+> Note:
+>
+> - previous global installed  Django need [uninstall][install django] before install Django in current virtual python environment
+> - no space allowed in path when install Django or it will fail
+>
+> More information about [virtualenv][virtualenv].
+
+### Start repository server
+
+```
+cd enterprise-repo
+source env/bin/activate
+cd enterprepo
+python manage.py runserver
+```
+
+### Add custom repository
+
+[How to add custom repository?][add custom repository]
+
+By default you should use "http://127.0.0.1:8000/pluginrepo/" as custom repository url.
+
+<!-- Add links here -->
+[virtualenv]: https://virtualenv.pypa.io/en/stable/
+[install django]: https://docs.djangoproject.com/en/1.11/topics/install/
+[add custom repository]: https://www.jetbrains.com/help/idea/managing-enterprise-plugin-repositories.html#add_plugin_repos

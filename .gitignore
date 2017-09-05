@@ -50,4 +50,14 @@ crashlytics-build.properties
 fabric.properties
 
 # Customs
+*.swp
+*.pyc
 Demo Plugin.jar
+enterprise-repo/env/
+enterprise-repo/enterprepo/db.sqlite3
+# for visual studio code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
