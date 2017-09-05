@@ -59,6 +59,10 @@ python manage.py runserver
 
 By default you should use "http://127.0.0.1:8000/pluginrepo/" as custom repository url.
 
+![Custom Plugin Repositories](./snapshots/custom_plugin_repositories.png)
+
+![DemoPlugin in Custom Repository](./snapshots/demo_plugin_in_custom_repository.png)
+
 <!-- Add links here -->
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
 [install django]: https://docs.djangoproject.com/en/1.11/topics/install/
