@@ -16,13 +16,13 @@ public class MainEntryFileType implements FileType {
     @NotNull
     @Override
     public String getName() {
-        return "Main Entry";
+        return "Tools Main Entry File";
     }
 
     @NotNull
     @Override
     public String getDescription() {
-        return "Tools Main Entry";
+        return "Tools Main Entry File Type";
     }
 
     @NotNull
