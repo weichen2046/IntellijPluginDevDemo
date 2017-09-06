@@ -3,7 +3,10 @@
 {% if plugins %}
   {% for plugin in plugins %}
     <plugin id="{{ plugin.strId }}" url="{{ plugin.url }}" version="{{ plugin.version }}">
+      <name>{{ plugin.name }}</name>
       <description><![CDATA[{{ plugin.description }}]]></description>
+      <vendor email="{{ plugin.vendor.email }}" url="{{ plugin.vendor.url }}">{{ plugin.vendor.name }}</vendor>
+      <!--<change-notes><![CDATA[Change Notes]]></change-notes>-->
     </plugin>
   {% endfor %}
 {% endif %}
