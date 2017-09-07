@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^pluginrepo/', include('pluginrepo.urls')),
+    url(r'^pluginjar/', include('pluginjar.urls')),
     url(r'^admin/', admin.site.urls),
 ]
