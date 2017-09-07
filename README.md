@@ -34,15 +34,17 @@ virtualenv env
 source env/bin/activate
 pip install Django==1.11.4
 
+cd enterprepo
 python manage.py migrate
 ```
 
 > Note:
 >
+> - only initialize once.
 > - previous global installed  Django need [uninstall][install django] before install Django in current virtual python environment
 > - no space allowed in path when install Django or it will fail
 >
-> More information about [virtualenv][virtualenv].
+> Consult [virtualenv][virtualenv] for more information.
 
 ### Start repository server
 
@@ -52,6 +54,10 @@ source env/bin/activate
 cd enterprepo
 python manage.py runserver
 ```
+
+> Note:
+>
+> no need `source env/bin/activate` if you already activate the virtual environment.
 
 ### Add custom repository
 
