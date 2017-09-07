@@ -54,9 +54,10 @@ fabric.properties
 *.pyc
 Demo Plugin.jar
 enterprise-repo/env/
+enterprise-repo/uploaded-plugins/
 enterprise-repo/enterprepo/db.sqlite3
 # for visual studio code
-.vscode/*
+**/.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
