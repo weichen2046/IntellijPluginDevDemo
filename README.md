@@ -26,7 +26,17 @@ Intellij IDEA plugin development demos.
 
 ## Enterprise Repository
 
+### Requirements
+
+  - Python 2.7.10
+  - Virtualenv 15.1.0
+  - Django 1.11.4
+  - Node 6.11.3
+  - yarn 1.0.1
+
 ### Initialize environment
+
+#### Background
 
 ```
 cd enterprise-repo
@@ -45,6 +55,15 @@ python manage.py migrate
 > - no space allowed in path when install Django or it will fail
 >
 > Consult [virtualenv][virtualenv] for more information.
+
+#### Frontend
+
+```
+cd enterprise-repo
+cd frontend
+yarn install
+./deploy.sh
+```
 
 ### Start repository server
 

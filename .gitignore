@@ -56,6 +56,7 @@ Demo Plugin.jar
 enterprise-repo/env/
 enterprise-repo/uploaded-plugins/
 enterprise-repo/enterprepo/db.sqlite3
+enterprise-repo/enterprepo/statics
 # for visual studio code
 **/.vscode/*
 !.vscode/settings.json
