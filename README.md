@@ -67,6 +67,15 @@ yarn install
 
 ### Start repository server
 
+#### Build frontend resources
+
+```
+cd enterprise-repo/frontend
+./deploy.sh
+```
+
+#### Run test server
+
 ```
 cd enterprise-repo
 source env/bin/activate
@@ -76,7 +85,8 @@ python manage.py runserver
 
 > Note:
 >
-> no need `source env/bin/activate` if you already activate the virtual environment.
+> - no need `source env/bin/activate` if you already activate the virtual environment.
+> - you can navigate to `http://127.0.0.1:8000` after start the test server.
 
 ### Add custom repository
 
