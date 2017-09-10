@@ -6,9 +6,9 @@
         <a md-button routerLink="/register">Sign up</a>
     </div>
     <ng-template #elseBlock>
-        <button md-icon-button [mdMenuTriggerFor]="menu">
+        <button md-button [mdMenuTriggerFor]="menu">
             <md-icon>account_circle</md-icon>
-            <span>{{ auth.getAuthenticatedUser().username }}</span>
+            {{ auth.getAuthenticatedUser().username }}
         </button>
         <md-menu #menu="mdMenu">
             <button md-menu-item>
