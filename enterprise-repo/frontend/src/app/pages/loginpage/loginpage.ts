@@ -4,15 +4,15 @@ import { MdButtonModule, MdInputModule } from '@angular/material';
 import { FooterModule } from '../../shared/footer';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './registerpage.html',
-    styleUrls: ['./registerpage.scss'],
+    selector: 'app-login',
+    templateUrl: './loginpage.html',
+    styleUrls: ['./loginpage.scss',],
 })
-export class RegisterPage { }
+export class LoginPage { }
 
 @NgModule({
     imports: [FooterModule, MdButtonModule, MdInputModule],
-    declarations: [RegisterPage],
-    exports: [RegisterPage],
+    exports: [LoginPage],
+    declarations: [LoginPage],
 })
-export class RegisterModule { }
+export class LoginModule { }

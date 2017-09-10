@@ -7,11 +7,11 @@ import { FooterModule } from '../../shared/footer';
     templateUrl: './homepage.html',
     styleUrls: [ './homepage.css' ]
 })
-export class Homepage {}
+export class HomePage {}
 
 @NgModule({
     imports: [ FooterModule ],
-    declarations: [Homepage],
-    exports: [Homepage],
+    declarations: [HomePage],
+    exports: [HomePage],
 })
-export class HomepageModule {}
+export class HomeModule {}

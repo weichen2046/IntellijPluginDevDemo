@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+
+@import "./app-theme.scss";
+@import "./styles/general.scss";
+
+// Include material core styles.
+@include mat-core();
+
+// Define the paletters.
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// Create the theme object.
+$theme: mat-light-theme($primary, $accent);
+
+// Include theme styles for core and each component used in your app.
+@include angular-material-theme($theme);
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include app-theme($theme);

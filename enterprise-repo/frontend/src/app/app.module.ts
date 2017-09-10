@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 
 import { APP_ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
-import { HomepageModule } from './pages/homepage';
+import { HomeModule } from './pages/homepage';
+import { LoginModule } from './pages/loginpage';
 import { NavbarModule } from './shared/navbar';
-import { RegisterPageModule } from './pages/registerpage';
+import { RegisterModule } from './pages/registerpage';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,10 @@ import { RegisterPageModule } from './pages/registerpage';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(APP_ROUTES),
-    HomepageModule,
+    HomeModule,
+    LoginModule,
     NavbarModule,
-    RegisterPageModule,
+    RegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

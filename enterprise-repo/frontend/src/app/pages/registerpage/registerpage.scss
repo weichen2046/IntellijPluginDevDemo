@@ -1,0 +1,30 @@
+$margin-sections: 60px;
+
+.register {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.register-row {
+    display: flex;
+    max-width: 920px;
+    margin: $margin-sections 0;
+}
+
+.register-form {
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-field {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    min-height: 46px;
+}
