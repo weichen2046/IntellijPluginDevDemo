@@ -1,5 +1,24 @@
 <nav class="navbar">
     <div class="flex-spacer"></div>
-    <a md-button routerLink="/login">Sign in</a>
-    <a md-button routerLink="/register">Sign up</a>
+    <div *ngIf="!auth.isAuthenticated(); else elseBlock">
+        <a md-button routerLink="/login">Sign in</a>
+        <span>or</span>
+        <a md-button routerLink="/register">Sign up</a>
+    </div>
+    <ng-template #elseBlock>
+        <button md-icon-button [mdMenuTriggerFor]="menu">
+            <md-icon>account_circle</md-icon>
+            <span>{{ auth.getAuthenticatedUser().username }}</span>
+        </button>
+        <md-menu #menu="mdMenu">
+            <button md-menu-item>
+                <md-icon>account_circle</md-icon>
+                <span>Profile</span>
+            </button>
+            <button md-menu-item>
+                <md-icon>exit_to_app</md-icon>
+                <span>Sign Out</span>
+            </button>
+        </md-menu>
+    </ng-template>
 </nav>
