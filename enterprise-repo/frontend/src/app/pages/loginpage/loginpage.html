@@ -1,14 +1,14 @@
 <div class="login">
     <div class="login-row">
-        <form class="login-form">
+        <div class="login-form">
             <md-form-field class="login-field">
-                <input mdInput placeholder="User Name" />
+                <input mdInput placeholder="User Name" #username />
             </md-form-field>
             <md-form-field class="login-field">
-                <input mdInput placeholder="Password" type="password" />
+                <input mdInput placeholder="Password" type="password" #password />
             </md-form-field>
-            <button md-raised-button color="primary" class="login-field submit-btn">Sign In</button>
-        </form>
+            <button md-raised-button color="primary" class="login-field submit-btn" (click)="login(username.value, password.value)">Sign In</button>
+        </div>
     </div>
 </div>
 <app-footer></app-footer>

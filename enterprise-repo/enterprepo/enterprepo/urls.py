@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^pluginrepo/', include('pluginrepo.urls')),
     url(r'^pluginjar/', include('pluginjar.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/v1/', include('apiv1.urls')),
     # for static files
     url(r'^.*\.(woff2|woff|ttf|js|map)', include('staticwrapper.urls')),
     url(r'^.*$', TemplateView.as_view(template_name="home.html"), name="home"),

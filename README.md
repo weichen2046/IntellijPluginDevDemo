@@ -43,6 +43,7 @@ cd enterprise-repo
 virtualenv env
 source env/bin/activate
 pip install Django==1.11.4
+pip install djangorestframework
 
 cd enterprepo
 python manage.py migrate
