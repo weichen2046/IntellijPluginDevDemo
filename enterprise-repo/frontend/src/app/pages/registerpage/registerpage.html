@@ -1,19 +1,37 @@
 <div class="register">
     <div class="register-row">
-        <form class="register-form">
+        <form class="register-form" (ngSubmit)="register()">
             <md-form-field class="register-field">
-                <input mdInput placeholder="Email" />
+                <input mdInput placeholder="Email" required [formControl]="formGroup.get('email')" />
+                <md-error *ngIf="formGroup.get('email').hasError('required')">
+                    Email is <strong>required</strong>
+                </md-error>
+                <md-error *ngIf="formGroup.get('email').hasError('pattern')">
+                    Please enter a valiad email address
+                </md-error>
             </md-form-field>
             <md-form-field class="register-field">
-                <input mdInput placeholder="User Name" />
+                <input mdInput placeholder="User Name" required [formControl]="formGroup.get('username')" />
+                <md-error *ngIf="formGroup.get('username').hasError('required')">
+                    User Name is required
+                </md-error>
             </md-form-field>
             <md-form-field class="register-field">
-                <input mdInput placeholder="Password" type="password" />
+                <input mdInput placeholder="Password" type="password" required [formControl]="formGroup.get('password')" />
+                <md-error *ngIf="formGroup.get('password').hasError('required')">
+                    Password is required
+                </md-error>
             </md-form-field>
             <md-form-field class="register-field">
-                <input mdInput placeholder="Confirm Password" type="password" />
+                <input mdInput placeholder="Confirm Password" type="password" required [formControl]="formGroup.get('confirmpwd')" />
+                <md-error *ngIf="formGroup.get('confirmpwd').hasError('required')">
+                    Confirm password is required
+                </md-error>
+                <md-error *ngIf="formGroup.get('confirmpwd').hasError('mismatch')">
+                    Confirm password should be equal to password
+                </md-error>
             </md-form-field>
-            <button md-raised-button color="primary" class="register-field submit-btn">Sign Up</button>
+            <button type="submit" md-raised-button color="primary" class="register-field submit-btn" [disabled]="formGroup.invalid">Sign Up</button>
         </form>
     </div>
 </div>
