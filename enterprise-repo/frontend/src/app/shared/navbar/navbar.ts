@@ -16,6 +16,16 @@ export class Navbar {
         private router: Router
     ) { }
 
+    signIn() {
+        if (!this.router.isActive('/login', false)) {
+            if (this.router.isActive('/register', false)) {
+                this.router.navigate(['/login']);
+            } else {
+                this.router.navigate(['/login', { next: this.router.url }]);
+            }
+        }
+    }
+
     signOut() {
         this.auth.logout();
         this.router.navigateByUrl('/');

@@ -1,7 +1,7 @@
 <nav class="navbar">
     <div class="flex-spacer"></div>
     <div *ngIf="!auth.isAuthenticated(); else elseBlock">
-        <a md-button routerLink="/login">Sign in</a>
+        <a md-button (click)="signIn()">Sign in</a>
         <span>or</span>
         <a md-button routerLink="/register">Sign up</a>
     </div>
