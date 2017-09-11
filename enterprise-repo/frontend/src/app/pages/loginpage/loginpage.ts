@@ -1,6 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MdButtonModule, MdInputModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
@@ -16,6 +17,18 @@ import { User, AuthenticationModule, AuthenticationService } from '../../shared/
 export class LoginPage implements OnInit {
     private user: User;
     private nextUrl: string;
+
+    private usernameFormControl = new FormControl('', [
+        Validators.required
+    ]);
+    private passwordFormControl = new FormControl('', [
+        Validators.required
+    ]);
+
+    private formGroup  = new FormGroup({
+        'username': this.usernameFormControl,
+        'password': this.passwordFormControl,
+    })
 
     constructor(
         private auth: AuthenticationService,
@@ -41,7 +54,15 @@ export class LoginPage implements OnInit {
 }
 
 @NgModule({
-    imports: [AuthenticationModule, FooterModule, FormsModule, MdButtonModule, MdInputModule],
+    imports: [
+        AuthenticationModule,
+        FooterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MdButtonModule,
+        MdInputModule,
+        CommonModule,
+    ],
     exports: [LoginPage],
     declarations: [LoginPage],
     providers: [],
