@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { MdButtonModule, MdIconModule, MdMenuModule } from '@angular/material';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 import { AuthenticationModule, AuthenticationService, User } from '../authentication';
 
@@ -11,7 +11,14 @@ import { AuthenticationModule, AuthenticationService, User } from '../authentica
     styleUrls: ['./navbar.scss'],
 })
 export class Navbar {
-    constructor(private auth: AuthenticationService) {
+    constructor(
+        private auth: AuthenticationService,
+        private router: Router
+    ) { }
+
+    signOut() {
+        this.auth.logout();
+        this.router.navigateByUrl('/');
     }
 }
 

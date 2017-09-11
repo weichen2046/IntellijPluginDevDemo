@@ -12,6 +12,7 @@ export class AuthenticationService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private loginApiUrl = 'api/v1/auth/login/';
+    private logoutApiUrl = 'api/v1/auth/logout/';
 
     constructor(private http: Http) {
         this.loadUserFromCookies().then(user => {
@@ -56,5 +57,19 @@ export class AuthenticationService {
             .catch(error => {
                 return Promise.reject(error);
             });
+    }
+
+    logout(): Promise<boolean> {
+        return this.http.post(this.logoutApiUrl, {})
+            .toPromise()
+            .then(resp => {
+                this.unauthenticate();
+                return true;
+            })
+            .catch(error => {
+                console.log('logout failed:', error);
+                this.unauthenticate();
+                return Promise.reject(false);
+            })
     }
 }

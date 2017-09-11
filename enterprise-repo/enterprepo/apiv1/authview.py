@@ -1,11 +1,19 @@
 import json
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
-from rest_framework import status, views
+from rest_framework import permissions, status, views
 from rest_framework.response import Response
 
 from user import UserSerializer
+
+
+class LogoutView(views.APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, format=None):
+        logout(request)
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 
 class LoginView(views.APIView):
