@@ -15,7 +15,7 @@ import { User, AuthenticationModule, AuthenticationService } from '../../shared/
     styleUrls: ['./login-snackbar.scss'],
 })
 export class LoginSnackBarComponent {
-    constructor(@Inject(MD_SNACK_BAR_DATA) public data: any) {}
+    constructor( @Inject(MD_SNACK_BAR_DATA) public data: any) { }
 }
 
 @Component({
@@ -49,25 +49,28 @@ export class LoginPageComponent implements OnInit {
     ngOnInit() {
         this.route.paramMap.subscribe((params: ParamMap) => {
             this.nextUrl = params.get('next');
+            if (this.auth.isAuthenticated()) {
+                this.navigateAfterLogin();
+                return;
+            }
         });
+    }
+
+    private navigateAfterLogin() {
+        if (!!this.nextUrl) {
+            this.router.navigate([this.nextUrl]);
+        } else {
+            this.router.navigate(['/']);
+        }
     }
 
     login(username: string, password: string) {
         this.auth.login(username, password)
             .then(user => {
-                if (!!this.nextUrl) {
-                    this.router.navigate([this.nextUrl]);
-                } else {
-                    this.router.navigate(['/']);
-                }
+                this.navigateAfterLogin();
             })
             .catch(resp => {
                 // notify user login failed
-                /*
-                this.snackBar.openFromComponent(LoginSnackBarComponent, {
-                    duration: 2000,
-                });
-                */
                 const rData = JSON.parse(resp._body)
                 let config = new MdSnackBarConfig();
                 config.duration = 3000;

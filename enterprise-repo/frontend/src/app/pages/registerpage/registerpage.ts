@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MdButtonModule, MdInputModule } from '@angular/material';
@@ -14,7 +14,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
     templateUrl: './registerpage.html',
     styleUrls: ['./registerpage.scss'],
 })
-export class RegisterPageComponent {
+export class RegisterPageComponent implements OnInit {
     private pwdFormControl = new FormControl('', [
         Validators.required,
     ]);
@@ -45,13 +45,22 @@ export class RegisterPageComponent {
         private route: Router,
     ) { }
 
+    ngOnInit() {
+        if (this.auth.isAuthenticated()) {
+            console.log('already registered');
+            this.route.navigate(['/']);
+            return;
+        }
+    }
+
     register() {
         this.auth.register(this.email, this.username, this.password).then(result => {
             if (result) {
-                this.auth.login(this.username, this.password).then(resp => {
-                    // redirect to home page
-                    this.route.navigate(['/']);
-                });
+                this.auth.login(this.username, this.password)
+                    .then(resp => {
+                        // redirect to home page
+                        this.route.navigate(['/']);
+                    });
             } else {
                 console.log('show reigster error');
             }

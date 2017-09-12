@@ -5,6 +5,8 @@ import 'rxjs/add/operator/toPromise';
 
 import { User } from './user';
 
+const LOCAL_USER_ACCESS_KEY = 'localUser';
+
 @Injectable()
 export class AuthenticationService {
 
@@ -22,8 +24,13 @@ export class AuthenticationService {
     }
 
     private loadUserFromCookies(): Promise<User> {
-        // TODO: load user info from cookies
-        return Promise.resolve(null);
+        // load user info from local storage
+        let user: User = null;
+        let userStr = localStorage.getItem(LOCAL_USER_ACCESS_KEY);
+        if (!!userStr) {
+            user = JSON.parse(userStr) as User;
+        }
+        return Promise.resolve(user);
     }
 
     getAuthenticatedUser(): User {
@@ -36,12 +43,15 @@ export class AuthenticationService {
 
     setAuthenticatedUser(user: User) {
         this.user = user;
-        // TODO: store user info from cookies
+        let userStr = JSON.stringify(user);
+        // store user info to local storage
+        localStorage.setItem(LOCAL_USER_ACCESS_KEY, userStr);
     }
 
     unauthenticate() {
         this.user = null;
-        // TODO: clear user info from cookies
+        // clear user info from local storage
+        localStorage.removeItem(LOCAL_USER_ACCESS_KEY);
     }
 
     login(username: string, password: string): Promise<User> {
