@@ -3,11 +3,26 @@ from rest_framework import permissions, serializers, viewsets
 
 from permissions import IsUserOwner
 
+
 # Serializers define the API representation.
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'password')
+        # this will omit password field when serialize
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        instance = User.objects.create(**validated_data)
+        # TODO: why User.objects.create(**validated_data) can't hash password
+        # for us?
+        # we use the following two line to save the hashed password or it will
+        # keep the original format from client and will cause authentication
+        # fail.
+        instance.set_password(validated_data['password'])
+        instance.save()
+        return instance
+
 
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):

@@ -2,7 +2,7 @@
     <div class="register-row">
         <form class="register-form" (ngSubmit)="register()">
             <md-form-field class="register-field">
-                <input mdInput placeholder="Email" required [formControl]="formGroup.get('email')" />
+                <input mdInput placeholder="Email" required [formControl]="formGroup.get('email')" [(ngModel)]="email" />
                 <md-error *ngIf="formGroup.get('email').hasError('required')">
                     Email is <strong>required</strong>
                 </md-error>
@@ -11,13 +11,14 @@
                 </md-error>
             </md-form-field>
             <md-form-field class="register-field">
-                <input mdInput placeholder="User Name" required [formControl]="formGroup.get('username')" />
+                <input mdInput placeholder="User Name" required [formControl]="formGroup.get('username')" [(ngModel)]="username" />
                 <md-error *ngIf="formGroup.get('username').hasError('required')">
                     User Name is required
                 </md-error>
             </md-form-field>
             <md-form-field class="register-field">
-                <input mdInput placeholder="Password" type="password" required [formControl]="formGroup.get('password')" />
+                <input mdInput placeholder="Password" type="password" required [formControl]="formGroup.get('password')" [(ngModel)]="password"
+                />
                 <md-error *ngIf="formGroup.get('password').hasError('required')">
                     Password is required
                 </md-error>

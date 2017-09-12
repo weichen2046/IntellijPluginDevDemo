@@ -13,6 +13,7 @@ export class AuthenticationService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private loginApiUrl = 'api/v1/auth/login/';
     private logoutApiUrl = 'api/v1/auth/logout/';
+    private registerApiUrl = 'api/v1/auth/register/';
 
     constructor(private http: Http) {
         this.loadUserFromCookies().then(user => {
@@ -70,6 +71,23 @@ export class AuthenticationService {
                 console.log('logout failed:', error);
                 this.unauthenticate();
                 return Promise.reject(false);
+            });
+    }
+
+    register(email: string, username: string, password: string): Promise<boolean> {
+        console.log('register called, email:', email, 'username:', username, 'pwd:', password);
+        const data = JSON.stringify({
+            'email': email,
+            'username': username,
+            'password': password,
+        });
+        return this.http.post(this.registerApiUrl, data, { headers: this.headers })
+            .toPromise()
+            .then(resp => {
+                return true;
             })
+            .catch(error => {
+                return false;
+            });
     }
 }
