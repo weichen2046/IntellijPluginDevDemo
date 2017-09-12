@@ -28,3 +28,8 @@ $margin-sections: 60px;
 .submit-btn {
     min-height: 46px;
 }
+
+::ng-deep .error-hint {
+    background: #F44336;
+    font-weight: bold;
+}

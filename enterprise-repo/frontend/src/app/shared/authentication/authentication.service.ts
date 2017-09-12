@@ -55,8 +55,8 @@ export class AuthenticationService {
                 this.setAuthenticatedUser(resp.json() as User);
                 return this.getAuthenticatedUser();
             })
-            .catch(error => {
-                return Promise.reject(error);
+            .catch(resp => {
+                return Promise.reject(resp);
             });
     }
 
