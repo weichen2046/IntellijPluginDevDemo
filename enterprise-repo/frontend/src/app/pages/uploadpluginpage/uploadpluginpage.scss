@@ -1,30 +1,39 @@
 $margin-sections: 60px;
 
-.register {
+.uploadplugin {
     align-items: center;
     display: flex;
     flex-direction: column;
     padding: 16px;
 }
 
-.register-row {
+.uploadplugin-row {
     display: flex;
     max-width: 920px;
     margin: $margin-sections 0;
-}
-
-.register-form {
-    min-width: 400px;
-    display: flex;
     flex-direction: column;
 }
 
-.register-field {
+.upload-input-container {
     width: 100%;
-    margin-bottom: 10px;
+    min-width: 400px;
     margin-top: 10px;
+    border-bottom: 1px solid #9E9E9E;
+    padding-bottom: 10px;
 }
 
 .submit-btn {
     min-height: 46px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.error-container {
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: red;
 }

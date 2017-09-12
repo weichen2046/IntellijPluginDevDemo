@@ -1,0 +1,16 @@
+<div class="uploadplugin">
+    <div class="uploadplugin-row">
+        <h1>Adding new plugin</h1>
+        <h3>Upload JAR/ZIP:</h3>
+        <form class="uploadplugin-form" (ngSubmit)="uploadPlugin(fileInput.files[0])">
+            <div class="upload-input-container">
+                <input type="file" #fileInput (change)="fileSelectedChanged(fileInput)" accept=".jar,.zip"/>
+            </div>
+            <div class="error-container">
+                <span class="error-message">{{ errorMsg }}</span>
+            </div>
+            <button type="submit" md-raised-button color="primary" class="submit-btn uppercase" [disabled]="!enabled">Upload new plugin</button>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

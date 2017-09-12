@@ -6,6 +6,10 @@
         <a md-button routerLink="/register">Sign up</a>
     </div>
     <ng-template #elseBlock>
+        <button md-button class="uppercase" routerLink="/uploadplugin">
+            <md-icon>file_upload</md-icon>
+            Upload Plugin
+        </button>
         <button md-button [mdMenuTriggerFor]="menu">
             <md-icon>account_circle</md-icon>
             {{ auth.getAuthenticatedUser().username }}

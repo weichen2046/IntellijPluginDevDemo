@@ -17,6 +17,7 @@ export class AuthenticationService {
     private logoutApiUrl = 'api/v1/auth/logout/';
     private registerApiUrl = 'api/v1/auth/register/';
 
+    // TODO: user new HttpClient api instead of Http
     constructor(private http: Http) {
         this.loadUserFromCookies().then(user => {
             this.user = user;

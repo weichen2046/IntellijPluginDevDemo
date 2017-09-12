@@ -9,6 +9,7 @@ import { HomeModule } from './pages/homepage';
 import { LoginModule } from './pages/loginpage';
 import { NavbarModule } from './shared/navbar';
 import { RegisterModule } from './pages/registerpage';
+import { UploadPluginModule } from './pages/uploadpluginpage';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RegisterModule } from './pages/registerpage';
     LoginModule,
     NavbarModule,
     RegisterModule,
+    UploadPluginModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
