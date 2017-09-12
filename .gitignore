@@ -63,3 +63,5 @@ enterprise-repo/enterprepo/statics
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+# for Mac
+.DS_Store
