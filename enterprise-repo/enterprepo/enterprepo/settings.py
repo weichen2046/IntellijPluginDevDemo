@@ -136,3 +136,7 @@ REST_FRAMEWORK = {
 }
 
 UPLOADED_PLUGIN_BASE_DIR = os.path.join(os.path.dirname(BASE_DIR), 'uploaded-plugins')
+EXTERNAL_TOOLS_DIR = os.path.join(os.path.dirname(BASE_DIR), 'external_tools')
+EXTERNAL_TOOLS = {
+    'plugin_parser': os.path.join(EXTERNAL_TOOLS_DIR, 'pluginparser-0.1.jar'),
+}
