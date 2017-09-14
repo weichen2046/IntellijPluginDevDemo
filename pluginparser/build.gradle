@@ -1,0 +1,60 @@
+buildscript {
+
+  ext.kotlin_version = '1.1.4-3'
+
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
+}
+
+def intellijStructureVersion = '3.0'
+def parserVersion = '0.1'
+
+group 'com.spreadst.devtools'
+version parserVersion
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.spreadst.devtools.pluginparser.CliMainKt'
+    }
+
+    // fat Jar
+
+    // This line of code recursively collects and copies all of a project's files
+    // and adds them to the JAR itself. One can extend this task, to skip certain
+    // files or particular types at will
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://dl.bintray.com/jetbrains/intellij-plugin-service" }
+}
+
+dependencies {
+    compile "org.jetbrains.intellij.plugins:structure-classes:$intellijStructureVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.google.code.gson:gson:2.8.1'
+
+    // Use the following compile dependency to avoid warning from slf4j when we run the
+    // fat jar without appropriate SLF4J binding could be found on the class path.
+    // Consult link https://www.slf4j.org/codes.html#StaticLoggerBinder for more information.
+    //
+    // ```
+    // SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+    // SLF4J: Defaulting to no-operation (NOP) logger implementation
+    // SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+    // ```
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

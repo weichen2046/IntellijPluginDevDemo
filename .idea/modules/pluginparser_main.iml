@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="pluginparser:main" external.linked.project.path="$MODULE_DIR$/../../pluginparser" external.root.project.path="$MODULE_DIR$/../../pluginparser" external.system.id="GRADLE" external.system.module.group="com.spreadst.devtools" external.system.module.type="sourceSet" external.system.module.version="0.1" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="3" platform="JVM 1.6" useProjectSettings="false">
+        <compilerSettings />
+        <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../pluginparser/build/kotlin-classes/main" />
+          <option name="noStdlib" value="true" />
+          <option name="noReflect" value="true" />
+          <option name="moduleName" value="pluginparser_main" />
+          <option name="addCompilerBuiltIns" value="true" />
+          <option name="loadBuiltInsFromDependencies" value="true" />
+          <option name="languageVersion" value="1.1" />
+          <option name="apiVersion" value="1.1" />
+          <option name="pluginOptions">
+            <array />
+          </option>
+          <option name="pluginClasspaths">
+            <array />
+          </option>
+          <option name="version" value="true" />
+        </compilerArguments>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/../../pluginparser/out/production/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../pluginparser/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../pluginparser/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../pluginparser/src/main/kotlin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../pluginparser/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.intellij.plugins:structure-classes:3.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.1.4-3" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-simple:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.1.4-3" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.intellij.plugins:structure-intellij:3.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.ow2.asm:asm-all:5.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.intellij.plugins:structure-base:3.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jdom:jdom:2.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.9.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.intellij:annotations:12.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" name="Gradle: commons-io:commons-io:2.5" level="project" />
+    <orderEntry type="library" name="Gradle: org.codehaus.plexus:plexus-archiver:2.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1" level="project" />
+    <orderEntry type="library" name="Gradle: org.codehaus.plexus:plexus-utils:3.0.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.codehaus.plexus:plexus-io:2.0.6" level="project" />
+    <orderEntry type="library" name="Gradle: classworlds:classworlds:1.1-alpha-2" level="project" />
+  </component>
+</module>

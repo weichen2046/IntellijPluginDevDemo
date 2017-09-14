@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Demo Plugin.iml" filepath="$PROJECT_DIR$/Demo Plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pluginparser.iml" filepath="$PROJECT_DIR$/.idea/modules/pluginparser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pluginparser_main.iml" filepath="$PROJECT_DIR$/.idea/modules/pluginparser_main.iml" group="pluginparser" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pluginparser_test.iml" filepath="$PROJECT_DIR$/.idea/modules/pluginparser_test.iml" group="pluginparser" />
     </modules>
   </component>
 </project>
