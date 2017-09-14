@@ -134,3 +134,5 @@ REST_FRAMEWORK = {
         #'rest_framework.permissions.DjangoModelPermissions'
     ]
 }
+
+UPLOADED_PLUGIN_BASE_DIR = os.path.join(os.path.dirname(BASE_DIR), 'uploaded-plugins')
