@@ -6,42 +6,43 @@ import os
 
 from django.http import FileResponse, HttpResponse
 
-BASE_PATH = '/home/chenwei/IdeaProjects/DemoPlugin/enterprise-repo/uploaded-plugins'
+from pluginjar.models import PluginVersionedFile
+
 
 # Create your views here.
-def index(request):
+def index(request, plugin_id, plugin_version, plugin_file_name):
     '''
     Return the requested versioned plugin file.
     '''
 
-    final_file_path = _get_plugin_file_path(request)
-    if os.path.isfile(final_file_path):
+    final_file_path = _get_plugin_file_path(
+        request, plugin_id, plugin_version, plugin_file_name)
+    if final_file_path is not None and os.path.isfile(final_file_path):
         content_type = mimetypes.guess_type(final_file_path)[0]
         file_size = os.path.getsize(final_file_path)
-        response = FileResponse(open(final_file_path, 'rb'), content_type=content_type)
+        response = FileResponse(
+            open(final_file_path, 'rb'), content_type=content_type)
         response['Content-Length'] = file_size
-        response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(final_file_path)
+        response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(
+            final_file_path)
         return response
     return HttpResponse('File not exist', status=404)
 
-def upload(request):
+
+def _get_plugin_file_path(request, plugin_id, plugin_version, plugin_file_name):
     '''
-    Handle upload of plugin jar file or plugin zip file.
+    Get plugin file path according to plugin id and plugin version.
+    Return None if not found.
     '''
 
-    #TODO:
-    # 1 check file name can only contains ascii.
-    # 2 url encode file name if needed
-    # 3 store uploaded file to disk
-    # 4 update table Plugin and PluginVersionedFile
+    p_versioned = None
+    try:
+        p_versioned = PluginVersionedFile.objects.get(
+            plugin__strId=plugin_id, version=plugin_version)
+    except PluginVersionedFile.DoesNotExist:
+        return None
 
-    return None
-
-def _get_plugin_file_path(request):
-    #TODO: get plugin file path from database according to request information
-    # version, versioned file id, etc.
-
-    # simple approach
-    filename = os.path.basename(request.path)
-    final_file_path = os.path.join(BASE_PATH, filename)
-    return final_file_path
+    basename = os.path.basename(p_versioned.path)
+    if basename != plugin_file_name:
+        return None
+    return p_versioned.path

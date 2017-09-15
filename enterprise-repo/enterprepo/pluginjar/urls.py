@@ -3,5 +3,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'', views.index, name="index2")
+    url(r'^(?P<plugin_id>.*)/(?P<plugin_version>.*)/(?P<plugin_file_name>.*)$',
+        views.index, name="pluginjar")
 ]

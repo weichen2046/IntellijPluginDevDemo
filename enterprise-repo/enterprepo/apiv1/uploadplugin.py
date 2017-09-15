@@ -37,6 +37,11 @@ class UploadPluginView(views.APIView):
             stat = status.HTTP_400_BAD_REQUEST
             ok = False
 
+        # TODO:
+        # 1 check file name can only contains ascii.
+        # 2 url encode file name if needed, space will cause IDEA plugin
+        # downloader error.
+
         if ok and not self._file_size_check(file):
             data['message'] = 'file max size is 100M'
             stat = status.HTTP_400_BAD_REQUEST
@@ -181,7 +186,8 @@ class UploadPluginView(views.APIView):
             # check version exist or not
             try:
                 PluginVersionedFile.objects.get(plugin=p_db, version=p_version)
-                raise Exception('plugin with the version: %s already exist' % p_version)
+                raise Exception(
+                    'plugin with the version: %s already exist' % p_version)
                 # TODO: do we need to check version downgrade?
             except PluginVersionedFile.DoesNotExist:
                 pass
@@ -203,7 +209,8 @@ class UploadPluginView(views.APIView):
             p_versioned.plugin = p_db
             p_versioned.uploader = self.request.user
         except PluginVersionedFile.DoesNotExist:
-            p_versioned = PluginVersionedFile(path=file, plugin=p_db, uploader=self.request.user)
+            p_versioned = PluginVersionedFile(
+                path=file, plugin=p_db, uploader=self.request.user)
         p_versioned.version = p_version
         p_versioned.changeNotes = p_change_notes
         p_versioned.save()
