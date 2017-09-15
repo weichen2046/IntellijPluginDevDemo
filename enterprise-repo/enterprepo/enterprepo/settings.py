@@ -135,6 +135,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+DOWNLOAD_PLUGIN_BASE_URL = 'http://127.0.0.1:8000/pluginjar'
 UPLOADED_PLUGIN_BASE_DIR = os.path.join(os.path.dirname(BASE_DIR), 'uploaded-plugins')
 EXTERNAL_TOOLS_DIR = os.path.join(os.path.dirname(BASE_DIR), 'external_tools')
 EXTERNAL_TOOLS = {

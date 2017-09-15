@@ -14,4 +14,4 @@ class PluginVersionedFile(models.Model):
     version     = models.CharField(max_length=100)
     changeNotes = models.TextField(null=True, blank=True)
     # path which the file stored on disk
-    path        = models.CharField(max_length=2000)
+    path        = models.CharField(max_length=2000, unique=True)

@@ -6,13 +6,13 @@ from django.db import models
 
 # Create your models here.
 class PluginVendor(models.Model):
-    name    = models.CharField(max_length=200)
-    email   = models.EmailField()
-    url     = models.URLField()
+    name    = models.CharField(max_length=200, unique=True)
+    email   = models.EmailField(null=True)
+    url     = models.URLField(null=True)
 
 class Plugin(models.Model):
     name        = models.CharField(max_length=50)
-    strId       = models.CharField(max_length=256)
+    strId       = models.CharField(max_length=256, unique=True)
     createTime  = models.DateTimeField(auto_now_add=True)
     # description can only has one copy, maybe we can provide entry to allow
     # modify this field.
