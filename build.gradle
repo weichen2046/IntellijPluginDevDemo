@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.2.17"
+}
+
+apply plugin: 'org.jetbrains.intellij'
+
+intellij {
+    intellij.localPath '/Applications/IntelliJ IDEA CE.app'
+    pluginName 'Demo Plugin'
+}
+
+jar {
+    baseName 'Demo Plugin'
+}
+
+group 'com.spreadst.devtools'
+version '1.0'
