@@ -1,4 +1,4 @@
-package com.spreadst.devtools.android.editors.mainentry;
+package com.spreadst.devtools.demos.editor;
 
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorPolicy;
@@ -7,11 +7,11 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 
-public class MainEntryEditorProvider implements FileEditorProvider {
+public class DemoFileEditorProvider implements FileEditorProvider {
 
-    private static final String ID = "st-main-entry-editor";
+    private static final String ID = "st-demo-editor";
 
-    private static final String sSuffix = MainEntryFileType.DOT_EXT_MAIN_ENTRY;
+    private static final String sSuffix = DemoFileType.DOT_EXT_DEMO;
 
     @Override
     public boolean accept(@NotNull Project project, @NotNull VirtualFile file) {
@@ -22,7 +22,7 @@ public class MainEntryEditorProvider implements FileEditorProvider {
     @NotNull
     @Override
     public FileEditor createEditor(@NotNull Project project, @NotNull VirtualFile file) {
-        return new MainEntryViewEditor();
+        return new DemoViewEditor();
     }
 
     @NotNull

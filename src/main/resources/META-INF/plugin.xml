@@ -1,16 +1,16 @@
 <idea-plugin>
-  <id>com.your.company.unique.plugin.id</id>
+  <id>com.spreadst.devtools.demoplugin</id>
   <name>Demo Plugin</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="weichen2046@gmail.com" url="https://github.com/weichen2046/IntellijPluginDevDemo">Demo Company</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
+      This plugin shows demos for developing Intellij plugins.<br>
       <em>most HTML tags may be used</em>
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
+      Change notes goes here.<br>
       <em>most HTML tags may be used</em>
     ]]>
   </change-notes>
@@ -25,19 +25,30 @@
   -->
 
   <extensions defaultExtensionNs="com.intellij">
+    <!-- For demos -->
+    <fileTypeFactory implementation="com.spreadst.devtools.demos.editor.DemoFileTypeFactory" />
+    <fileEditorProvider implementation="com.spreadst.devtools.demos.editor.DemoFileEditorProvider" />
+
     <!-- Add your extensions here -->
-    <fileTypeFactory implementation="com.spreadst.devtools.android.editors.mainentry.MainEntryFileTypeFactory" />
-    <fileEditorProvider implementation="com.spreadst.devtools.android.editors.mainentry.MainEntryEditorProvider" />
+    <fileTypeFactory implementation="com.spreadst.devtools.editors.mainentry.MainEntryFileTypeFactory" />
+    <fileEditorProvider implementation="com.spreadst.devtools.editors.mainentry.MainEntryEditorProvider" />
   </extensions>
 
   <actions>
-    <!-- Add your actions here -->
-    <group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">
-      <add-to-group group-id="MainMenu" anchor="last"  />
-      <!-- icon of action should be placed in a top-level package called icons -->
-      <action id="MyPlugin.MyAction" class="com.spreadst.devtools.demos.action.MyActionClass" text="My_Item"
+    <!-- For demos -->
+    <group id="MyPlugin.DemoMenu" text="_Demo Menu Group" description="Demo menu group">
+        <add-to-group group-id="MainMenu" anchor="last"  />
+        <!-- icon of action should be placed in a top-level package called icons -->
+        <action id="MyPlugin.DemoAction" class="com.spreadst.devtools.demos.action.MyActionClass" text="_Demo Action"
               description="Description of the action item" icon="Icons.AndroidRobot"/>
-      <action id="MyPlugin.OpenMainEntry" class="com.spreadst.devtools.android.editors.mainentry.OpenMainEntryAction"
+        <action id="MyPlugin.OpenDemoEditor" class="com.spreadst.devtools.demos.editor.OpenDemoEditorAction"
+              text="_Demo Editor" description="Open demo editor" icon="Icons.DemoEditor"/>
+    </group>
+
+    <!-- Add your actions here -->
+    <group id="Warehouse.MenuGroup" text="Tool Warehouse" description="Tool warehouse">
+      <add-to-group group-id="MainMenu" anchor="last"  />
+      <action id="Warehouse.OpenMainEntry" class="com.spreadst.devtools.editors.mainentry.OpenMainEntryAction"
               text="_Main Entry" description="Open tools main entry" icon="Icons.MainEntry"/>
     </group>
   </actions>

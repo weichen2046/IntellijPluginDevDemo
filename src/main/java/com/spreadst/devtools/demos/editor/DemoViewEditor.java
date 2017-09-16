@@ -1,4 +1,4 @@
-package com.spreadst.devtools.android.editors.mainentry;
+package com.spreadst.devtools.demos.editor;
 
 import com.intellij.codeHighlighting.BackgroundEditorHighlighter;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -11,12 +11,12 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.beans.PropertyChangeListener;
 
-public class MainEntryViewEditor extends UserDataHolderBase implements FileEditor {
+public class DemoViewEditor extends UserDataHolderBase implements FileEditor {
 
-    private MainEntryViewer mMyViewer;
+    private DemoViewer mMyViewer;
 
-    public MainEntryViewEditor() {
-        mMyViewer = new MainEntryViewer();
+    public DemoViewEditor() {
+        mMyViewer = new DemoViewer();
     }
 
     @NotNull
@@ -34,7 +34,7 @@ public class MainEntryViewEditor extends UserDataHolderBase implements FileEdito
     @NotNull
     @Override
     public String getName() {
-        return "Main Entry";
+        return "Demo Editor";
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.spreadst.devtools.android.editors.mainentry;
+package com.spreadst.devtools.demos.editor;
 
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -8,33 +8,33 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class MainEntryFileType implements FileType {
-    public static final MainEntryFileType INSTANCE = new MainEntryFileType();
-    public static final String EXT_MAIN_ENTRY = "stme";
-    public static final String DOT_EXT_MAIN_ENTRY = ".stme";
+public class DemoFileType implements FileType {
+    public static final DemoFileType INSTANCE = new DemoFileType();
+    public static final String EXT_DEMO = "demo";
+    public static final String DOT_EXT_DEMO = ".demo";
 
     @NotNull
     @Override
     public String getName() {
-        return "Tools Main Entry File";
+        return "Demo File";
     }
 
     @NotNull
     @Override
     public String getDescription() {
-        return "Tools Main Entry File Type";
+        return "Demo File Type";
     }
 
     @NotNull
     @Override
     public String getDefaultExtension() {
-        return EXT_MAIN_ENTRY;
+        return EXT_DEMO;
     }
 
     @Nullable
     @Override
     public Icon getIcon() {
-        return Icons.MainEntry;
+        return Icons.DemoEditor;
     }
 
     @Override

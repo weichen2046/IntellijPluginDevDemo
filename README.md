@@ -4,7 +4,7 @@ Intellij IDEA plugin development demos.
 
 ## Current Supports
 
-- [Action Demo](src/com/spreadst/devtools/demos/action/MyActionClass.java)
+- [Action Demo](src/main/java/com/spreadst/devtools/demos/action/MyActionClass.java)
 
   ```
   <actions>
@@ -22,7 +22,7 @@ Intellij IDEA plugin development demos.
 
   ![snapshot](snapshots/plugin_action_demo.png)
 
-- [Custom Editor Demo](src/com/spreadst/devtools/android/editors/mainentry/)
+- [Custom Editor Demo](src/main/java/com/spreadst/devtools/editors/mainentry/)
 
 ## Enterprise Repository
 

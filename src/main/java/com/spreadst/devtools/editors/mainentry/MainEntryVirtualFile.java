@@ -1,4 +1,4 @@
-package com.spreadst.devtools.android.editors.mainentry;
+package com.spreadst.devtools.editors.mainentry;
 
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
