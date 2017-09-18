@@ -1,8 +1,19 @@
 # IntellijPluginDevDemo
 
-Intellij IDEA plugin development demos.
+Intellij IDEA plugin demos with a simple enterprise repository.
 
-## Current Supports
+## Requirements
+
+### gradle config
+
+Add a property named `idea_local_path` to your `~/.gradle/gradle.properties` file. The value of this property is the absolute path of local IDEA home directory. This path is used to config IDEA sandbox to avoid download IDEA zip file from remote site to save your time.
+
+```
+// ~/.gradle/gradle.properties
+idea_local_path=/path/to/idea-IC-172.xxxx.xx
+```
+
+## Current demos
 
 - [Action Demo](src/main/java/com/spreadst/devtools/demos/action/MyActionClass.java)
 

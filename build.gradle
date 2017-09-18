@@ -11,7 +11,10 @@ plugins {
 apply plugin: 'org.jetbrains.intellij'
 
 intellij {
-    intellij.localPath '/Applications/IntelliJ IDEA CE.app'
+    // add the idea local path to gradle.properties.
+    // ~/.gradle/gradle.properties
+    // idea_local_path=/path/to/idea-IC-172.xxxx.xx
+    intellij.localPath idea_local_path
     pluginName 'Demo Plugin'
 }
 

@@ -38,7 +38,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../pluginparser/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../pluginparser/out" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.intellij.plugins:structure-classes:3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.1.4-3" level="project" />
