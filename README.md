@@ -35,6 +35,12 @@ idea_local_path=/path/to/idea-IC-172.xxxx.xx
 
 - [Custom Editor Demo](src/main/java/com/spreadst/devtools/editors/mainentry/)
 
+  ![custom editor snapshot](snapshots/plugin_custom_editor_demo.png)
+
+- [Tool Window Demo](src/main/java/com/spreadst/devtools/demos/toolwindow)
+
+  ![tool window snapshot](snapshots/plugin_tool_window_demo.png)
+
 ## Enterprise Repository
 
 ### Requirements
