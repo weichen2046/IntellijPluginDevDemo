@@ -68,3 +68,7 @@ enterprise-repo/enterprepo/statics
 
 build
 .gradle
+
+# .iml files for the Gradle or Maven based projects, since these files will be generated on import
+.idea/modules/Demo_Plugin.iml
+.idea/modules/pluginparser.iml
