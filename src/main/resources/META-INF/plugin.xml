@@ -1,56 +1,60 @@
 <idea-plugin>
-  <id>com.spreadst.devtools.demoplugin</id>
-  <name>Demo Plugin</name>
-  <version>1.0</version>
-  <vendor email="weichen2046@gmail.com" url="https://github.com/weichen2046/IntellijPluginDevDemo">Demo Company</vendor>
+    <id>com.spreadst.devtools.demoplugin</id>
+    <name>Demo Plugin</name>
+    <version>1.0</version>
+    <vendor email="weichen2046@gmail.com" url="https://github.com/weichen2046/IntellijPluginDevDemo">Demo Company
+    </vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       This plugin shows demos for developing Intellij plugins.<br>
       <em>most HTML tags may be used</em>
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Change notes goes here.<br>
       <em>most HTML tags may be used</em>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="145.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- For demos -->
-    <fileTypeFactory implementation="com.spreadst.devtools.demos.editor.DemoFileTypeFactory" />
-    <fileEditorProvider implementation="com.spreadst.devtools.demos.editor.DemoFileEditorProvider" />
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- For demos -->
+        <fileTypeFactory implementation="com.spreadst.devtools.demos.editor.DemoFileTypeFactory"/>
+        <fileEditorProvider implementation="com.spreadst.devtools.demos.editor.DemoFileEditorProvider"/>
+        <toolWindow id="Demo ToolWindow" anchor="bottom" icon="Icons.DemoToolWindow"
+                    factoryClass="com.spreadst.devtools.demos.toolwindow.DemoToolWindowFactory"/>
 
-    <!-- Add your extensions here -->
-    <fileTypeFactory implementation="com.spreadst.devtools.editors.mainentry.MainEntryFileTypeFactory" />
-    <fileEditorProvider implementation="com.spreadst.devtools.editors.mainentry.MainEntryEditorProvider" />
-  </extensions>
+        <!-- Add your extensions here -->
+        <fileTypeFactory implementation="com.spreadst.devtools.editors.mainentry.MainEntryFileTypeFactory"/>
+        <fileEditorProvider implementation="com.spreadst.devtools.editors.mainentry.MainEntryEditorProvider"/>
+    </extensions>
 
-  <actions>
-    <!-- For demos -->
-    <group id="MyPlugin.DemoMenu" text="_Demo Menu Group" description="Demo menu group">
-        <add-to-group group-id="MainMenu" anchor="last"  />
-        <!-- icon of action should be placed in a top-level package called icons -->
-        <action id="MyPlugin.DemoAction" class="com.spreadst.devtools.demos.action.MyActionClass" text="_Demo Action"
-              description="Description of the action item" icon="Icons.AndroidRobot"/>
-        <action id="MyPlugin.OpenDemoEditor" class="com.spreadst.devtools.demos.editor.OpenDemoEditorAction"
-              text="_Demo Editor" description="Open demo editor" icon="Icons.DemoEditor"/>
-    </group>
+    <actions>
+        <!-- For demos -->
+        <group id="MyPlugin.DemoMenu" text="_Demo Menu Group" description="Demo menu group">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <!-- icon of action should be placed in a top-level package called icons -->
+            <action id="MyPlugin.DemoAction" class="com.spreadst.devtools.demos.action.MyActionClass"
+                    text="_Demo Action"
+                    description="Description of the action item" icon="Icons.AndroidRobot"/>
+            <action id="MyPlugin.OpenDemoEditor" class="com.spreadst.devtools.demos.editor.OpenDemoEditorAction"
+                    text="_Demo Editor" description="Open demo editor" icon="Icons.DemoEditor"/>
+        </group>
 
-    <!-- Add your actions here -->
-    <group id="Warehouse.MenuGroup" text="Tool Warehouse" description="Tool warehouse">
-      <add-to-group group-id="MainMenu" anchor="last"  />
-      <action id="Warehouse.OpenMainEntry" class="com.spreadst.devtools.editors.mainentry.OpenMainEntryAction"
-              text="_Main Entry" description="Open tools main entry" icon="Icons.MainEntry"/>
-    </group>
-  </actions>
+        <!-- Add your actions here -->
+        <group id="Warehouse.MenuGroup" text="Tool Warehouse" description="Tool warehouse">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="Warehouse.OpenMainEntry" class="com.spreadst.devtools.editors.mainentry.OpenMainEntryAction"
+                    text="_Main Entry" description="Open tools main entry" icon="Icons.MainEntry"/>
+        </group>
+    </actions>
 
 </idea-plugin>
