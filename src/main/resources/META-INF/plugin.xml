@@ -47,6 +47,8 @@
                     description="Description of the action item" icon="Icons.AndroidRobot"/>
             <action id="MyPlugin.OpenDemoEditor" class="com.spreadst.devtools.demos.editor.OpenDemoEditorAction"
                     text="_Demo Editor" description="Open demo editor" icon="Icons.DemoEditor"/>
+            <action id="MyPlugin.OpenDemoDialog" class="com.spreadst.devtools.demos.dialog.OpenDemoDialogAction"
+                    text="_Demo Dialog" description="Open demo dialog" icon="Icons.DemoEditor"/>
         </group>
 
         <!-- Add your actions here -->

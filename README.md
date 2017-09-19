@@ -45,6 +45,10 @@ idea_local_path=/path/to/idea-IC-172.xxxx.xx
 
   ![tool window snapshot](snapshots/plugin_tool_window_demo.png)
 
+- [Dialog Demo](src/main/java/com/spreadst/devtools/demos/dialog)
+
+  ![dialog snapshot](snapshots/plugin_demo_dialog.png)
+
 ## Enterprise Repository
 
 ### Requirements
