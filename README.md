@@ -13,6 +13,10 @@ Add a property named `idea_local_path` to your `~/.gradle/gradle.properties` fil
 idea_local_path=/path/to/idea-IC-172.xxxx.xx
 ```
 
+## Import project and build
+
+[How to import project and build plugins?](BUILD.md)
+
 ## Current demos
 
 - [Action Demo](src/main/java/com/spreadst/devtools/demos/action/MyActionClass.java)
