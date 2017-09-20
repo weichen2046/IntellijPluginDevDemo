@@ -16,7 +16,7 @@ public class MainEntryViewEditor extends UserDataHolderBase implements FileEdito
     private MainEntryViewer mMyViewer;
 
     public MainEntryViewEditor() {
-        mMyViewer = new MainEntryViewer();
+        mMyViewer = new MainEntryViewer(this);
     }
 
     @NotNull
