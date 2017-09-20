@@ -51,6 +51,9 @@
                     text="_Demo Dialog" description="Open demo dialog" icon="Icons.DemoEditor"/>
             <action id="MyPlugin.OpenDemoPopup" class="com.spreadst.devtools.demos.popup.OpenDemoPopupAction"
                     text="_Demo Popup" description="Open demo popup" icon="Icons.DemoEditor"/>
+            <action id="MyPlugin.TriggerDemoNotification"
+                    class="com.spreadst.devtools.demos.notification.NotificationTriggerAction"
+                    text="_Demo Notification" description="Trigger demo notification" icon="Icons.DemoNotification"/>
         </group>
 
         <!-- Add your actions here -->

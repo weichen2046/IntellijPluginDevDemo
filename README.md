@@ -53,6 +53,10 @@ idea_local_path=/path/to/idea-IC-172.xxxx.xx
 
   ![popup snapshot](snapshots/plugin_popup_demo.png)
 
+- [Notification Demo](src/main/java/com/spreadst/devtools/demos/notification)
+
+  ![notification snapshot](snapshots/plugin_notification_demo.png)
+
 ## Enterprise Repository
 
 ### Requirements
