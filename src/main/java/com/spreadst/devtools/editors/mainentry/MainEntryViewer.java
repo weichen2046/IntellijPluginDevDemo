@@ -8,6 +8,7 @@ import com.intellij.ui.components.JBTextField;
 import javax.annotation.Nonnull;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 
 public class MainEntryViewer implements Disposable {
@@ -21,7 +22,7 @@ public class MainEntryViewer implements Disposable {
 
     private JBTextField mSearchBox;
     private JPanel mBottomPanel;
-    private JPanel mSearchResultPanel;
+    private PluginSearchResultPanel mSearchResultContainer;
     private JPanel mRecommendationPanel;
 
     public MainEntryViewer(Disposable parent) {
@@ -43,17 +44,18 @@ public class MainEntryViewer implements Disposable {
     private void initContainerComponent(@Nonnull JComponent container) {
         container.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1.0;
         c.gridx = 0;
+
         c.gridy = 0;
-        c.weightx = 1.0;
-        c.weighty = 0.2;
+        c.insets.set(100, 0, 100, 0);
         container.add(getSearchPanel(), c);
+
         c.fill = GridBagConstraints.BOTH;
-        c.gridx = 0;
+        c.weighty = 1.0;
         c.gridy = 1;
-        c.weightx = 1.0;
-        c.weighty = 0.8;
+        c.insets.set(0, 0, 0, 0);
         container.add(getBottomPanel(), c);
     }
 
@@ -88,7 +90,7 @@ public class MainEntryViewer implements Disposable {
     private JPanel getBottomPanel() {
         mBottomPanel = new JPanel(new CardLayout());
         mBottomPanel.add(getRecommendationPanel(), RECOMMENDATION_PANEL);
-        mBottomPanel.add(getSearchResultPanel(), SEARCH_RESULT_PANEL);
+        mBottomPanel.add(getSearchResultContainer(), SEARCH_RESULT_PANEL);
         return mBottomPanel;
     }
 
@@ -100,34 +102,42 @@ public class MainEntryViewer implements Disposable {
         c.weightx = 1.0;
         c.weighty = 1.0;
         c.gridy = 0;
+        c.insets.left = 40;
 
         c.gridx = 0;
         mRecommendationPanel.add(getHotPluginPanel(), c);
+
+        c.insets.left = 20;
         c.gridx = 1;
         mRecommendationPanel.add(getRecentNewPluginPanel(), c);
+
         c.gridx = 2;
+        c.insets.right = 40;
         mRecommendationPanel.add(getUpdateAvailablePanel(), c);
         return mRecommendationPanel;
     }
 
     private JPanel getHotPluginPanel() {
-        JPanel hot = new PluginListPanel("Hot Plugins");
+        PluginInfoFetcher fetcher = new PluginInfoFetcher("", PluginInfoFetcher.FetcherType.HOT);
+        JPanel hot = new PluginListPanel("Hot Plugins", fetcher);
         return hot;
     }
 
     private JPanel getRecentNewPluginPanel() {
-        JPanel recent = new PluginListPanel("Recent Added Plugins");
+        PluginInfoFetcher fetcher = new PluginInfoFetcher("", PluginInfoFetcher.FetcherType.NEW_ADDED);
+        JPanel recent = new PluginListPanel("Recent Added Plugins", fetcher);
         return recent;
     }
 
     private JPanel getUpdateAvailablePanel() {
-        JPanel update = new PluginListPanel("Update Available Plugins");
+        PluginInfoFetcher fetcher = new PluginInfoFetcher("", PluginInfoFetcher.FetcherType.UPDATE_AVAILABLE);
+        JPanel update = new PluginListPanel("Update Available Plugins", fetcher);
         return update;
     }
 
-    private JPanel getSearchResultPanel() {
-        mSearchResultPanel = new JPanel();
-        return mSearchResultPanel;
+    private JPanel getSearchResultContainer() {
+        mSearchResultContainer = new PluginSearchResultPanel();
+        return mSearchResultContainer;
     }
 
     private void initSearchBox() {
@@ -137,6 +147,11 @@ public class MainEntryViewer implements Disposable {
                 int termLength = e.getDocument().getLength();
                 if (termLength >= MIN_SEARCH_STRING_LENGTH) {
                     ((CardLayout) mBottomPanel.getLayout()).show(mBottomPanel, SEARCH_RESULT_PANEL);
+                    try {
+                        mSearchResultContainer.search(e.getDocument().getText(0, termLength));
+                    } catch (BadLocationException e1) {
+                        e1.printStackTrace();
+                    }
                 } else if (termLength == 0) {
                     ((CardLayout) mBottomPanel.getLayout()).show(mBottomPanel, RECOMMENDATION_PANEL);
                 }
