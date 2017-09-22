@@ -28,8 +28,12 @@ class PluginInfoFetcher(private var url: String, private var type: FetcherType) 
             }
 
             override fun finished() {
-                for (listener in listeners) {
-                    listener.onFinished(worker!!.get() as List<PluginBeanExt>)
+                val v = get()
+                if (v != null) {
+                    val finalV = v as List<PluginBeanExt>
+                    for (listener in listeners) {
+                        listener.onFinished(finalV)
+                    }
                 }
                 worker = null
             }
@@ -76,12 +80,33 @@ class PluginInfoFetcher(private var url: String, private var type: FetcherType) 
         pluigns.add(plugin)
         bindActionToPlugin(plugin)
 
+        plugin = PluginBeanExt()
+        plugin.name = "Demo Plugin 4"
+        plugin.pluginVersion = "1.0.4"
+        plugin.iconUrl = "http://path/to/plugin/icon"
+        pluigns.add(plugin)
+        bindActionToPlugin(plugin)
+
+        plugin = PluginBeanExt()
+        plugin.name = "Demo Plugin 5"
+        plugin.pluginVersion = "1.0.5"
+        plugin.iconUrl = "http://path/to/plugin/icon"
+        pluigns.add(plugin)
+        bindActionToPlugin(plugin)
+
+        plugin = PluginBeanExt()
+        plugin.name = "Demo Plugin 6"
+        plugin.pluginVersion = "1.0.6"
+        plugin.iconUrl = "http://path/to/plugin/icon"
+        pluigns.add(plugin)
+        bindActionToPlugin(plugin)
+
         return pluigns
     }
 
     private fun bindActionToPlugin(plugin: PluginBeanExt) {
         when (type) {
-            FetcherType.HOT, FetcherType.NEW_ADDED -> {
+            FetcherType.HOT, FetcherType.NEW_ADDED, FetcherType.SEARCH -> {
                 plugin.actionsExt.add(Pair("Install", Runnable {
                     // TODO: install the requested plugin
                 }))
