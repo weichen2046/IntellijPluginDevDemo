@@ -12,7 +12,7 @@ buildscript {
 }
 
 def intellijStructureVersion = '3.0'
-def parserVersion = '0.1'
+def parserVersion = '0.2'
 
 group 'com.spreadst.devtools'
 version parserVersion

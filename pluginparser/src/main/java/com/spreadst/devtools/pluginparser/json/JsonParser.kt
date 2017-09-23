@@ -29,11 +29,11 @@ object JsonParser {
         return when (pluginResult) {
             is PluginCreationSuccess -> {
                 val jsonR = JsonResultSuccess(pluginResult.plugin, if (withErrorsOrWarnnings) pluginResult.warnings else null)
-                gson.toJson(jsonR).replace("\\n", "\\\\n").replace("\\\"", "\\\\\\\"")
+                gson.toJson(jsonR)
             }
             is PluginCreationFail -> {
                 val jsonR = JsonResultFail(if (withErrorsOrWarnnings) pluginResult.errorsAndWarnings else null)
-                gson.toJson(jsonR).replace("\\n", "\\\\n").replace("\\\"", "\\\\\\\"")
+                gson.toJson(jsonR)
             }
         }
     }

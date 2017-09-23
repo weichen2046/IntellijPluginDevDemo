@@ -109,7 +109,7 @@ class UploadPluginView(views.APIView):
 
     def _parse_plugin_file(self, file_path):
         '''
-        Use external tool pluginparser-0.1.jar to parse plugin file.
+        Use external tool pluginparser-<version>.jar to parse plugin file.
         Return a json object containing information of the plugin or None.
         '''
         plugin_parser = settings.EXTERNAL_TOOLS['plugin_parser']
