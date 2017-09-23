@@ -87,6 +87,7 @@ python manage.py migrate
 > - only initialize once.
 > - previous global installed  Django need [uninstall][install django] before install Django in current virtual python environment
 > - no space allowed in path when install Django or it will fail
+> - run `python manage.py createsuperuser` to create super user
 >
 > Consult [virtualenv][virtualenv] for more information.
 
