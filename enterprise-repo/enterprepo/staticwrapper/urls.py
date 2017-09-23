@@ -18,5 +18,5 @@ from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name="font"),
+    url(r'^$', views.index, name="staticwrapper"),
 ]

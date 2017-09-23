@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include('apiv1.urls')),
     # for static files
-    url(r'^.*\.(woff2|woff|ttf|js|map)', include('staticwrapper.urls')),
+    url(r'^.*\.(woff2|woff|ttf|js|map|png|jpg|jpeg)', include('staticwrapper.urls')),
     url(r'^.*$', TemplateView.as_view(template_name="home.html"), name="home"),
 ]
