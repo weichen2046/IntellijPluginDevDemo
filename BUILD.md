@@ -17,7 +17,8 @@ Import project and build
 
     ![config import](snapshots/build_project/config_gradle_import_settings.png)
 
-    > - You can ignore `Gradle JVM` currently.
+    > - `Gradle project` is the path to your project root directory
+    > - `Gradle JVM` should be your JAVA_HOME path
     > - Overrite exist `.idea` file if needed
     >
     >   ![overrite exist file](snapshots/build_project/overwrite_exist_file.png)
@@ -26,15 +27,11 @@ Import project and build
 
     ![remove not imported module](snapshots/build_project/remove_not_imported_module.png)
 
-  - Move file `pluginparser.iml` to directory `.idea/modules` and delete directory `.idea/modules/pluginparser`
+    > The name of the module to be removed will be different according to your project directory name.
 
-    After import successfully, module hierarchy like this picture:
+  - After import successfully, module hierarchy like this picture:
 
     ![module hierarchy after import](snapshots/build_project/after_import_successfully.png)
-
-    After move file `pluginparser.iml`, module hierarchy like this:
-
-    ![after move parserplugin file](snapshots/build_project/after_move_pluginparser.png)
 
   - Restore files after import
 
