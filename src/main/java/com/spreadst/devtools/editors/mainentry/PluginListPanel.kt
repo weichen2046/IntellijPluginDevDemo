@@ -4,6 +4,7 @@ import com.intellij.ui.SeparatorComponent
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.components.labels.LinkLabel
 import com.intellij.ui.components.panels.VerticalBox
+import com.spreadst.devtools.utils.UIBounceExecutor
 import icons.Icons
 import org.picocontainer.Disposable
 import java.awt.*
@@ -15,6 +16,8 @@ class PluginListPanel(title: String, private var fetcher: PluginInfoFetcher)
     : JPanel(), PluginInfoFetcher.PluginInfoFetcherListener, Disposable {
     private var titleLabel = JLabel()
     private var innerList: InnerPanel
+
+    private val executorForLoad = UIBounceExecutor(300)
 
     init {
         layout = GridBagLayout()
@@ -75,7 +78,9 @@ class PluginListPanel(title: String, private var fetcher: PluginInfoFetcher)
     }
 
     private fun refresh() {
-        fetcher.refresh()
+        executorForLoad.execute(Runnable {
+            fetcher.refresh()
+        })
     }
 
     class InnerPanel : VerticalBox() {

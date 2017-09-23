@@ -3,7 +3,9 @@ package com.spreadst.devtools.editors.mainentry
 import com.intellij.openapi.Disposable
 import com.intellij.ui.components.labels.BoldLabel
 import com.intellij.vcs.log.ui.frame.WrappedFlowLayout
+import com.spreadst.devtools.utils.UIBounceExecutor
 import java.awt.*
+import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
 import java.awt.event.ComponentListener
 import javax.swing.JPanel
@@ -12,6 +14,16 @@ import javax.swing.border.EmptyBorder
 class PluginSearchResultPanel : JPanel() {
     private val title = BoldLabel("Search Result:")
     private val innerPanel = InnerPanel(PluginInfoFetcher("", PluginInfoFetcher.FetcherType.SEARCH))
+    private val executorForRelayout = UIBounceExecutor(300)
+    private val executorForSearch = UIBounceExecutor(300)
+
+    private val sizeListener: ComponentListener = object : ComponentAdapter() {
+        override fun componentResized(e: ComponentEvent?) {
+            executorForRelayout.execute(Runnable {
+                innerPanel.readd()
+            })
+        }
+    }
 
     init {
         layout = BorderLayout()
@@ -19,26 +31,21 @@ class PluginSearchResultPanel : JPanel() {
         add(title, BorderLayout.PAGE_START)
         add(innerPanel, BorderLayout.CENTER)
 
-        addComponentListener(object: ComponentListener {
-            override fun componentMoved(e: ComponentEvent?) {
-            }
-
-            override fun componentResized(e: ComponentEvent?) {
-                //(innerPanel.resultPanel.layout as WrappedFlowLayout).layoutContainer(innerPanel.resultPanel)
-                innerPanel.readd()
-            }
-
+        addComponentListener(object : ComponentAdapter() {
             override fun componentHidden(e: ComponentEvent?) {
+                removeComponentListener(sizeListener)
             }
 
             override fun componentShown(e: ComponentEvent?) {
+                addComponentListener(sizeListener)
             }
-
         })
     }
 
     fun search(term: String) {
-        innerPanel.refresh(term)
+        executorForSearch.execute(Runnable {
+            innerPanel.refresh(term)
+        })
     }
 
     class InnerPanel(private val fetcher: PluginInfoFetcher) :
@@ -52,8 +59,6 @@ class PluginSearchResultPanel : JPanel() {
             fake.setContent("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
             itemPrefSize = fake.preferredSize
 
-            background = Color.YELLOW
-
             resultPanel = JPanel()
             val l = WrappedFlowLayout(40, 20)
             //val l = FlowLayout()
@@ -62,8 +67,6 @@ class PluginSearchResultPanel : JPanel() {
             l.vgap = 20
             resultPanel.layout = l
             add(resultPanel, BorderLayout.NORTH)
-
-
 
             fetcher.addFetchListener(this)
         }
