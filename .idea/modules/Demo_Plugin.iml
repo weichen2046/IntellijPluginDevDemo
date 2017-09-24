@@ -40,6 +40,7 @@
     </content>
     <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.code.gson:gson:2.8.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.jetbrains:aether-1.1.0-all:IC-172.4155.36" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.jetbrains:aether-dependency-resolver:IC-172.4155.36" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.jetbrains:annotations:IC-172.4155.36" level="project" />
@@ -167,6 +168,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.jetbrains:xmlrpc-2.0:IC-172.4155.36" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.jetbrains:xpp3-1.1.4-min:IC-172.4155.36" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.jetbrains:xstream-1.4.8:IC-172.4155.36" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.code.gson:gson:2.8.1" level="project" />
     <orderEntry type="module-library" scope="RUNTIME">
       <library name="Gradle: tools">
         <CLASSES>
@@ -176,6 +178,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.gson:gson:2.8.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.jetbrains:aether-1.1.0-all:IC-172.4155.36" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.jetbrains:aether-dependency-resolver:IC-172.4155.36" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.jetbrains:annotations:IC-172.4155.36" level="project" />

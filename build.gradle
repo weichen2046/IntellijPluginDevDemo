@@ -9,12 +9,22 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.1.50"
 }
 
+apply plugin: 'idea'
+
 intellij {
     // add the idea local path to gradle.properties.
     // ~/.gradle/gradle.properties
     // idea_local_path=/path/to/idea-IC-172.xxxx.xx
     intellij.localPath idea_local_path
     pluginName 'Demo Plugin'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.8.1'
 }
 
 jar {
