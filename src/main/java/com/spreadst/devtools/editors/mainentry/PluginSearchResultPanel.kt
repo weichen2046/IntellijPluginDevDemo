@@ -4,7 +4,8 @@ import com.intellij.openapi.Disposable
 import com.intellij.ui.components.labels.BoldLabel
 import com.intellij.vcs.log.ui.frame.WrappedFlowLayout
 import com.spreadst.devtools.utils.UIBounceExecutor
-import java.awt.*
+import java.awt.BorderLayout
+import java.awt.Dimension
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
 import java.awt.event.ComponentListener
@@ -15,7 +16,6 @@ class PluginSearchResultPanel : JPanel() {
     private val title = BoldLabel("Search Result:")
     private val innerPanel = InnerPanel(PluginInfoFetcher("", PluginInfoFetcher.FetcherType.SEARCH))
     private val executorForRelayout = UIBounceExecutor(300)
-    private val executorForSearch = UIBounceExecutor(300)
 
     private val sizeListener: ComponentListener = object : ComponentAdapter() {
         override fun componentResized(e: ComponentEvent?) {
@@ -42,16 +42,18 @@ class PluginSearchResultPanel : JPanel() {
         })
     }
 
+    /**
+     * term.length always >= MainEntryViewer.MIN_SEARCH_STRING_LENGTH.
+     */
     fun search(term: String) {
-        executorForSearch.execute(Runnable {
-            innerPanel.refresh(term)
-        })
+        innerPanel.refresh(term)
     }
 
     class InnerPanel(private val fetcher: PluginInfoFetcher) :
             JPanel(), Disposable, PluginInfoFetcher.PluginInfoFetcherListener {
         private var itemPrefSize: Dimension
         private var resultPanel: JPanel
+        private val executorForSearch = UIBounceExecutor(300)
 
         init {
             val fake = PluginItemView()
@@ -72,8 +74,9 @@ class PluginSearchResultPanel : JPanel() {
         }
 
         fun refresh(term: String) {
-            // TODO: send search request delay
-            fetcher.refresh(term)
+            executorForSearch.execute(Runnable {
+                fetcher.refresh(term)
+            })
         }
 
         override fun dispose() {
